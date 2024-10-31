@@ -1,42 +1,28 @@
-import 'package:chat/screens/splash_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:camera/camera.dart';
+import 'package:chat/features/camera/CameraScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 
-import 'firebase_options.dart';
-import 'screens/auth_screen.dart';
-import 'screens/chat_screen.dart';
+import 'config/bloc/bloc_observer.dart';
+import 'core/services/services_locator.dart';
+import 'my_app/app_requirement_setup.dart';
+import 'my_app/my_app.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Bloc.observer = MyBlocObserver();
+  cameras = await availableCameras();
+  await Hive.initFlutter();
+  AppRequirementSetup.registerHiveAdapter();
+  configureDependencies();
 
-  runApp(const MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'ChatApp',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: StreamBuilder(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: ((ctx, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return SplashScreen();
-            }
-            if (snapshot.hasData) {
-              return const ChatScreen();
-            } else {
-              return const AuthScreen();
-            }
-          })),
-    );
-  }
-}
+/// todo:
+/// secure the app,
+/// analys with firebase,
+/// google map integration,
