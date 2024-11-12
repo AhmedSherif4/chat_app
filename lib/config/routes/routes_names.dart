@@ -16,4 +16,6 @@ abstract class AppRoutesNames {
   static const String rZoomImage = '/zoom_image';
 
   static const String rLoginScreen = '/login';
+  static const String rVerificationScreen = '/verificationScreen';
+  static const String rFillUserData = '/fillUserData';
 }

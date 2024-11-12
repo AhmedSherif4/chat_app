@@ -4,7 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:chat/features/camera/CameraView.dart';
 import 'package:flutter/material.dart';
 
-import '../video/VideoView.dart';
+import 'VideoView.dart';
 
 late List<CameraDescription> cameras;
 
@@ -38,6 +38,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //todo: rebuild that code with bloc
     return Scaffold(
       body: Stack(
         children: [

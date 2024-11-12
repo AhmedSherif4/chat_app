@@ -120,8 +120,10 @@ class AppReference {
   }
 
   static bool userIsGuest() {
-    if (getIt<UserLocalDataSource>().getUserData() != null &&
-        getIt<UserLocalDataSource>().getUserData()!.email == 'guest@mail.com') {
+    if (getIt<UserLocalDataSource>().getUserData() !=
+            null /* &&
+        getIt<UserLocalDataSource>().getUserData()!.email == 'guest@mail.com'*/
+        ) {
       return true;
     } else {
       return false;

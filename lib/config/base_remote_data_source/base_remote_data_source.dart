@@ -52,9 +52,8 @@ class BaseRemoteDataSourceImpl implements BaseRemoteDataSource {
     required String url,
     required Object body,
   }) async {
-    if (!await networkInfo.isConnected) {
-      throw const NoInternetConnectionException();
-    }
+    await NoInternetConnectionException().checkNetworkConnection();
+
     final response = await _checkStatusCode(await apiConsumer.post(
       url,
       body: body,
@@ -68,9 +67,8 @@ class BaseRemoteDataSourceImpl implements BaseRemoteDataSource {
     required String url,
     required Object body,
   }) async {
-    if (!await networkInfo.isConnected) {
-      throw const NoInternetConnectionException();
-    }
+    await NoInternetConnectionException().checkNetworkConnection();
+
     final response = await _checkStatusCode(await apiConsumer.publicPost(
       url,
       body: body,
@@ -85,16 +83,16 @@ class BaseRemoteDataSourceImpl implements BaseRemoteDataSource {
     required dynamic savePath,
     ProgressCallback? onReceiveProgress,
   }) async {
-    if (!await networkInfo.isConnected) {
-      throw const NoInternetConnectionException();
-    }
+    await NoInternetConnectionException().checkNetworkConnection();
+
     final response = await apiConsumer.download(
       url,
       savePath: savePath,
       onReceiveProgress: onReceiveProgress,
     );
     if (response.statusCode != 200) {
-      throw const ServerException(message: AppStrings.somethingWrongWhileDownloading);
+      throw const ServerException(
+          message: AppStrings.somethingWrongWhileDownloading);
     }
     return AppStrings.downloadedSuccessfully;
   }
@@ -104,9 +102,8 @@ class BaseRemoteDataSourceImpl implements BaseRemoteDataSource {
     required String url,
     Options? options,
   }) async {
-    if (!await networkInfo.isConnected) {
-      throw const NoInternetConnectionException();
-    }
+    await NoInternetConnectionException().checkNetworkConnection();
+
     return await _checkStringStatusCode(
         await apiConsumer.get(url, options: options));
   }

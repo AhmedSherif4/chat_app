@@ -8,10 +8,12 @@ import 'mobile/android.dart';
 import 'mobile/ios.dart';
 
 class HomeScreen extends CoreAdaptiveScreen {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
-  Widget android(BuildContext context) => const HomeAndroid();
+  Widget android(BuildContext context) => HomeAndroid();
 
   @override
   Widget ios(BuildContext context) => const HomeIOS();

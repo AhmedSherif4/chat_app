@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core/exceptions/exceptions.dart';
@@ -22,6 +23,12 @@ class BaseRepositoryImpl implements BaseRepository {
       return Right(await jsonFromRemoteData);
     } on ServerException catch (error) {
       return Left(ServerFailure(error.message));
+    } on FirebaseAuthException catch (error) {
+      return Left(ServerFailure(error.message!));
+    } on FirebaseException catch (error) {
+      return Left(ServerFailure(error.toString()));
+    } catch (error) {
+      return Left(ServerFailure(error.toString()));
     }
   }
 }

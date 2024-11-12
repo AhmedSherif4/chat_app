@@ -14,130 +14,130 @@ dependencies:
   firebase_auth: ^5.3.1
   firebase_storage: ^12.3.4
   firebase_messaging: ^15.1.3
-  flutter_facebook_auth: ^7.1.1
-  animations: ^2.0.1
-  circle_list: ^1.0.5
-  sqflite: ^2.0.0+3
-  open_file: ^3.2.1
-  photo_view: ^0.12.0
-  emoji_picker_flutter: ^1.0.6
-  fluttertoast: ^8.0.8
-#  permission_handler: ^11.3.1 will open it when we know what the permission we will use and add it in AndroidManifest.xml
-  file_picker: ^8.1.3
-#  pdf_viewer_plugin: ^2.0.1
-  google_maps_flutter: ^2.0.11
-  geolocator: ^13.0.1
-  just_audio: ^0.9.7
-  record: ^5.1.2
-#  flutter_local_notifications: ^17.2.4 it has some edits in android files
-  http: ^1.2.2
-  loading_overlay: ^0.3.0
+  #  flutter_facebook_auth: ^7.1.1
+  #  animations: ^2.0.11
+  #  circle_list: ^1.0.5
+  #  sqflite: ^2.4.0
+  #  open_file: ^3.5.9
+  #  photo_view: ^0.15.0
+  emoji_picker_flutter: ^3.1.0
+  #  fluttertoast: ^8.2.8
+  #  #  permission_handler: ^11.3.1 will open it when we know what the permission we will use and add it in AndroidManifest.xml
+  #  file_picker: ^8.1.3
+  #  #  pdf_viewer_plugin: ^2.0.1
+  #  google_maps_flutter: ^2.9.0
+  #  geolocator: ^13.0.1
+  #  just_audio: ^0.9.42
+  #  record: ^5.1.2
+  #  #  flutter_local_notifications: ^17.2.4 it has some edits in android files
+  #  http: ^1.2.2
+  #  loading_overlay: ^0.4.2
   camera: ^0.11.0+2
-  path: ^1.9.0
+  #  path: ^1.9.0
   video_player: ^2.9.2
   socket_io_client: ^3.0.0
-
-
-
   equatable: ^2.0.5
-  # state management
-  bloc: ^8.1.4
+  #  # state management
+  #  bloc: ^8.1.4
   flutter_bloc: ^8.1.6
-  #functional programming
+  #  #functional programming
   dartz: ^0.10.1
-  #service loacator
-  get_it: ^7.7.0
-  # to handle network requests
+  #  #service loacator
+  #  get_it: ^8.0.2
+  #  # to handle network requests
   dio: ^5.7.0
   internet_connection_checker: 1.0.0+1
-  # for SVG images
+  #  # for SVG images
   flutter_svg: ^2.0.10+1
-  # for shape of page indicator (scrolling between widgets horizontally)
-  smooth_page_indicator: ^1.2.0+3
-  #images from network
-  cached_network_image: ^3.4.1
-  #app animation
+  #  # for shape of page indicator (scrolling between widgets horizontally)
+  #  smooth_page_indicator: ^1.2.0+3
+  #  #images from network
+  #  cached_network_image: ^3.4.1
+  #  #app animation
   flutter_animate: ^4.5.0
-  #to handle services locator generating
-  injectable: ^2.4.4
-  #verificatino screen
-  pin_code_fields: ^8.0.1
-  #to get google account id
-  google_sign_in: ^6.2.1
-  #local Data base
+  #  #to handle services locator generating
+  injectable: ^2.5.0
+  #  #verificatino screen
+  #  pin_code_fields: ^8.0.1
+  #  #to get google account id
+  #  google_sign_in: ^6.2.1
+  #  #local Data base
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  #audio and video
-  chewie: ^1.8.5
-  audioplayers: ^6.1.0
-  #for questions screen
-  confetti: ^0.7.0
-  #to get mobile id
-  device_info_plus: ^10.1.2
-  #to pick & re-size images
-  image: ^4.2.0
+  #  #audio and video
+  #  chewie: ^1.8.5
+  #  audioplayers: ^6.1.0
+  #  #for questions screen
+  #  confetti: ^0.8.0
+  #  #to get mobile id
+  device_info_plus: ^11.1.0
+  #  #to pick & re-size images
+  image: ^4.3.0
   image_picker: ^1.1.2
-  #for launcher urls in contact us
-  url_launcher: ^6.3.0
-  #for download exam
-  path_provider: ^2.1.4
-  #handle app permissions
+  #  #for launcher urls in contact us
+  url_launcher: ^6.3.1
+  #  #for download exam
+  #  path_provider: ^2.1.5
+  #  #handle app permissions
   permission_handler: ^11.3.1
-  # charts and statics
-  syncfusion_flutter_charts: ^26.2.14
-  syncfusion_flutter_gauges: ^26.2.14
-  # circle progress in statics screen
-  percent_indicator: ^4.2.3
-  #hint for user when first install app
-  showcaseview: ^3.0.0
-  #for arabic local ltr
-  flutter_localization: ^0.2.2
-  #for animation in qurant screen
-  lottie: ^3.1.2
+  #  # charts and statics
+  #  syncfusion_flutter_charts: ^27.1.57
+  #  syncfusion_flutter_gauges: ^27.1.57
+  #  # circle progress in statics screen
+  #  percent_indicator: ^4.2.3
+  #  #hint for user when first install app
+  #  showcaseview: ^3.0.0
+  #  #for arabic local ltr
+  #  flutter_localization: ^0.2.2
+  #  #for animation in qurant screen
+  #  lottie: ^3.1.2
   app_settings: ^5.1.1
-  #  path_provider_foundation: ^2.3.1
-  sign_in_with_apple: ^6.1.2
-  screen_protector: ^1.4.2+1
-  background_downloader: ^8.5.5
-  intl: ^0.19.0
-  webview_flutter: ^4.9.0
-  animate_do: ^3.3.4
-  firebase_analytics: ^11.3.1
+  #  #  path_provider_foundation: ^2.3.1
+  #  sign_in_with_apple: ^6.1.3
+  #  screen_protector: ^1.4.2+1
+  background_downloader: ^8.6.0
+  #  intl: ^0.19.0
+  #  webview_flutter: ^4.0.0
+  #  animate_do: ^3.3.4
+  #  firebase_analytics: ^11.3.3
   app_links: ^6.3.2
-  carousel_slider: ^5.0.0
+  #  carousel_slider: ^5.0.0
   image_cropper: ^8.0.2
-  share_plus: ^10.0.2
-  flutter_html: any
-  appsflyer_sdk: ^6.15.1
-  in_app_review: ^2.0.9
-  #  flutter_facebook_auth: ^6.0.4
-  #  facebook_app_events: ^0.19.2
-  in_app_purchase: ^3.2.0
-  flutter_spinkit: ^5.2.1
-  #for rating in review
-  flutter_rating_bar: ^4.0.1
+  #  share_plus: ^10.1.1
+  #  flutter_html: any
+  #  appsflyer_sdk: ^6.15.2
+  #  in_app_review: ^2.0.9
+  #  #  flutter_facebook_auth: ^6.0.4
+  #  #  facebook_app_events: ^0.19.2
+  #  in_app_purchase: ^3.2.0
+  #  flutter_spinkit: ^5.2.1
+  #  #for rating in review
+  #  flutter_rating_bar: ^4.0.1
   connectivity_plus: ^6.1.0
-  flutter_staggered_grid_view: ^0.7.0
-  macos_ui: ^2.0.9
-  fluent_ui: ^4.9.2
+  #  flutter_staggered_grid_view: ^0.7.0
+  #  macos_ui: ^2.0.9
+  #  fluent_ui: ^4.9.2
   shared_preferences: ^2.3.2
-  youtube_player_iframe: ^5.2.0
-  firebase_data_connect: ^0.1.2+1
-
+  #  youtube_player_iframe: ^5.2.0
+  #  firebase_data_connect: ^0.1.2+1
+  numeric_keyboard: ^1.1.0
+  get_it: ^8.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  build_runner: ^2.4.12
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.13
   json_serializable: ^6.8.0
   injectable_generator: ^2.6.2
   hive_generator: ^2.0.1
+  mockito: ^5.4.4
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/icons/
   fonts:
     - family: OpenSans
       fonts:

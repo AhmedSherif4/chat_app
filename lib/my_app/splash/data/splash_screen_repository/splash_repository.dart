@@ -6,50 +6,30 @@
 // import '../../../../../core/shared_models/user/data/user_local_data_source/user_local_data_source.dart';
 // import '../../domain/splash_base_repository/splash_base_repository.dart';
 // import '../splash_data_source/splash_remote_data_source.dart';
-//
-// @LazySingleton(as: CheckUserTokenBaseRepository)
-// class CheckUserTokenRepository implements CheckUserTokenBaseRepository {
-//   final CheckUserTokenBaseRemoteDataSource remoteDataSource;
-//   final BaseRepository baseRepository;
-//   final UserLocalDataSource userLocalDataSource;
-//
-//   CheckUserTokenRepository({
-//     required this.remoteDataSource,
-//     required this.baseRepository,
-//     required this.userLocalDataSource,
-//   });
-//
-//   @override
-//   Future<Either<Failure, bool>> checkUserToken() async {
-//     final json = await baseRepository.checkExceptionForRemoteData(
-//       remoteDataSource.checkUserToken(),
-//     );
-//     return json.fold(
-//       (failure) => left(failure),
-//       (data) => right(data),
-//     );
-//   }
-//
-//   @override
-//   Future<Either<Failure, UserEntity>> editUserData() async{
-//     final json = await baseRepository.checkExceptionForRemoteData(
-//       remoteDataSource.editUserData(),
-//     );
-//     return json.fold(
-//           (failure) => left(failure),
-//           (data) => right(data),
-//     );
-//   }
-//
-//   // @override
-//   // Future<Either<Failure, bool>> checkUserToken() async {
-//   //   final json = await baseRepository.checkExceptionForRemoteData(
-//   //     remoteDataSource.checkUserToken(),
-//   //   );
-//   //   return json.fold(
-//   //         (failure) => left(failure),
-//   //         (data) => right(data),
-//   //   );
-//   // }
-//
-// }
+import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../../../config/base_repository/base_repository.dart';
+import '../../../../core/failure/failure.dart';
+import '../splash_data_source/splash_remote_data_source.dart';
+
+abstract class SplashBaseRepository {
+  // Future<Either<Failure, bool>> checkUserToken();
+  // Future<Either<Failure, UserEntity>> editUserData();
+  Future<Either<Failure, bool>> isAlreadyAuthenticated();
+}
+
+@LazySingleton(as: SplashBaseRepository)
+class SplashRepository implements SplashBaseRepository {
+  final SplashBaseRemoteDataSource remoteDataSource;
+  final BaseRepository baseRepository;
+
+  SplashRepository(
+      {required this.remoteDataSource, required this.baseRepository});
+
+  @override
+  Future<Either<Failure, bool>> isAlreadyAuthenticated() {
+    return baseRepository
+        .checkExceptionForRemoteData(remoteDataSource.isAlreadyAuthenticated());
+  }
+}

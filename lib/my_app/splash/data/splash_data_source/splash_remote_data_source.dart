@@ -9,46 +9,26 @@
 // import '../../../../../core/exceptions/exceptions.dart';
 // import '../../../../../core/shared_models/user/user_model/user_model.dart';
 //
-// abstract class CheckUserTokenBaseRemoteDataSource {
-//   Future<bool> checkUserToken();
-//   Future<UserEntity> editUserData();
+import 'package:chat/core/exceptions/exceptions.dart';
+import 'package:chat/core/shared_models/user/data/user_local_data_source/user_local_data_source.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../../../core/services/services_locator.dart';
+
+abstract class SplashBaseRemoteDataSource {
+  Future<bool> isAlreadyAuthenticated();
+}
+
 //
-// }
-//
-// @LazySingleton(as: CheckUserTokenBaseRemoteDataSource)
-// class CheckUserTokenRemoteDataSourceImpl
-//     implements CheckUserTokenBaseRemoteDataSource {
-//   final ApiConsumer apiConsumer;
-//   final NetworkInfo networkInfo;
-//   final BaseRemoteDataSource baseRemoteDataSource;
-//
-//   const CheckUserTokenRemoteDataSourceImpl({
-//     required this.networkInfo,
-//     required this.apiConsumer,
-//     required this.baseRemoteDataSource,
-//   });
-//
-//   @override
-//   Future<bool> checkUserToken() async {
-//     if (!await networkInfo.isConnected) {
-//       throw const NoInternetConnectionException();
-//     } else {
-//       final response = await apiConsumer.post(EndPoints.checkTokenPath);
-//
-//       if(response == null){
-//         return false;
-//       }
-//       return jsonDecode(response.data)['status'];
-//     }
-//   }
-//
-//   @override
-//   Future<UserEntity> editUserData() async {
-//
-//       final response = await baseRemoteDataSource.postData(url:EndPoints.mePath,body: {},);
-//       return UserModel.fromMap(response['data']);
-//
-//   }
-//
-//
-// }
+@LazySingleton(as: SplashBaseRemoteDataSource)
+class SplashRemoteDataSourceImpl implements SplashBaseRemoteDataSource {
+  @override
+  Future<bool> isAlreadyAuthenticated() async {
+    try {
+      return (getIt<UserLocalDataSource>().getUserData()?.userId?.isNotEmpty ??
+          false || getIt<UserLocalDataSource>().getUserData()?.userId == '');
+    } catch (e) {
+      throw ServerException(message: e.toString());
+    }
+  }
+}

@@ -1,5 +1,4 @@
 import 'package:chat/config/resources/app_animations.dart';
-import 'package:chat/config/resources/app_assets.dart';
 import 'package:chat/config/resources/app_constants.dart';
 import 'package:chat/config/resources/app_text_style.dart';
 import 'package:chat/config/responsive/responsive_extensions.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../app_assets/app_assets.dart';
 import '../../../my_app/app_settings/app_settings_cubit.dart';
 import 'custom_painter_widgets.dart';
 
@@ -56,7 +56,7 @@ class CustomAppBarWidget extends StatelessWidget {
                   : const AppTextStyle().playfairDisplay.labelMedium14w5,
             ).animateShimmer(),
             SvgPicture.asset(
-              AppImagesAssets.sLogo,
+              Assets.imagesLogo,
               width: 50.responsiveWidth,
               height: 50.responsiveHeight,
             ).animateScaleNFadeVertical(),

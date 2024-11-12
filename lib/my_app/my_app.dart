@@ -3,12 +3,13 @@ import 'dart:ui' as ui;
 import 'package:chat/config/resources/app_strings.dart';
 import 'package:chat/config/responsive/responsive.dart';
 import 'package:chat/core/services/services_locator.dart';
-import 'package:chat/my_app/deep_link.dart';
+import 'package:chat/core/shared_widgets/image_pick/image_pick_view_model/image_pick_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../config/adaptive/platform_builder.dart';
+import '../config/internet_connection/internet_connection_setup.dart';
 import '../config/resources/theme_mode/theme_manager.dart';
 import '../config/routes/routes_generator.dart';
 import '../config/routes/routes_names.dart';
@@ -29,14 +30,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
-    DeepLinkManager.instance.initDeepLink();
+    // WidgetsBinding.instance.addObserver(this);
+    // DeepLinkManager.instance.initDeepLink();
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    // WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -55,6 +56,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         BlocProvider(
           create: (context) => getIt<AppSettingsCubit>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<ImagePickBloc>(),
+        ),
       ],
       child: Stack(
         alignment: AlignmentDirectional.bottomStart,
@@ -71,7 +75,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             },
           ),
           //! for checking the internet connection
-          // const ConnectionAlert(),
+          const ConnectionAlert(),
         ],
       ),
     );

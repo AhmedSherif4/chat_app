@@ -10,6 +10,8 @@ abstract class AppColors {
   static const Color gray = Color(0xFF9E9E9E);
   static const Color red = Color(0xFFE57373);
   static const Color blue = Color(0xFF64B5F6);
+  static const Color purple = Color(0xFF503E9D);
+  static const Color purple2 = Color(0xFF6252A7);
 
   ///Light colors Theme
   static Color primaryColor(BuildContext context) =>
@@ -43,6 +45,7 @@ abstract class AppColors {
 
   ///fields color
   static const Color white = Color(0xFFFFFFFF);
+  static const Color white2 = Color(0xFFE1E0F5);
 
   ///text color
   static const Color textColor = Color(0xFF262626);

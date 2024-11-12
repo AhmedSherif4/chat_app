@@ -64,4 +64,12 @@ class AppPreferences {
   isDarkModeOn() {
     return _sharedPreferences.getBool(preferenceKeyDarkThemeModeOn) ?? false;
   }
+
+  saveUserDataAddedStatus(bool isUserDataAdded) {
+    _sharedPreferences.setBool('isUserDataAdded', isUserDataAdded);
+  }
+
+  bool getUserDataAddedStatus() {
+    return _sharedPreferences.getBool('isUserDataAdded') ?? false;
+  }
 }

@@ -17,9 +17,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   double _opacity = 0;
   bool _value = true;
-  bool onBoardingStatus = false;
-
-  late UserEntity? userData;
 
   @override
   void initState() {
@@ -70,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen>
       const Duration(seconds: 3),
       () {
         if (mounted) {
-          _goToHomeScreen(context);
+          _goToHomeOrLoginScreen(context);
         }
       },
     );
@@ -142,8 +139,8 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
               ),
-              SvgPicture.asset(
-                AppImagesAssets.sLogo,
+              Image.asset(
+                Assets.imagesLogo,
                 height: AppConstants.appLogoHeight.responsiveHeight,
                 width: AppConstants.appLogoWidth.responsiveWidth,
                 fit: BoxFit.fill,

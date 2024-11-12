@@ -4,7 +4,6 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   app_links
-  audioplayers_windows
   cloud_firestore
   connectivity_plus
   emoji_picker_flutter
@@ -12,12 +11,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   firebase_auth
   firebase_core
   firebase_storage
-  flutter_localization
-  flutter_secure_storage_windows
-  geolocator_windows
   permission_handler_windows
-  record_windows
-  share_plus
   url_launcher_windows
 )
 
