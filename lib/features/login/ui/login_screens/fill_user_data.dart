@@ -20,7 +20,7 @@ import '../../logic/login_cubit/login_cubit.dart';
 import '../../login.dart';
 
 class FillUserData extends StatefulWidget {
-  const FillUserData({Key? key}) : super(key: key);
+  const FillUserData({super.key});
 
   @override
   _FillUserDataState createState() => _FillUserDataState();

@@ -6,6 +6,7 @@ abstract class LoginRemoteDataSource {
   Future<UserEntity> validateOtpAndLogin(String smsCode);
 
   Future<UserEntity> saveUserData(UserModel userModel);
+
 }
 
 @LazySingleton(as: LoginRemoteDataSource)
@@ -81,7 +82,9 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
 
     // User is signing up for the first time
     try {
-      String uid = getIt<UserLocalDataSource>().getUserData()?.userId ?? '';
+      String uid = getIt<UserLocalDataSource>()
+          .getUserData()
+          ?.userId ?? '';
       await firestore.collection('users').doc(uid).set({
         'name': userModel.name,
         'imgPath': userModel.imgPath,
@@ -104,10 +107,8 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     actualCode = verificationId;
   }
 
-  void codeSent(
-    String verificationId,
-    int? forceResendingToken,
-  ) async {
+  void codeSent(String verificationId,
+      int? forceResendingToken,) async {
     actualCode = verificationId;
   }
 
@@ -118,36 +119,4 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
     );
   }
 
-  Future<void> _verifyPhoneNumber(String phoneNumber) async {
-    try {
-      final verificationId = await compute(_verifyPhoneNumberTask, phoneNumber);
-      actualCode = verificationId;
-    } catch (e) {
-      throw ServerException(
-        message: e.toString(),
-      );
-    }
-  }
-
-  static Future<String> _verifyPhoneNumberTask(String phoneNumber) async {
-    final completer = Completer<String>();
-
-    await getIt<FirebaseAuth>().verifyPhoneNumber(
-      phoneNumber: phoneNumber,
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await getIt<FirebaseAuth>().signInWithCredential(credential);
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        completer.completeError(e);
-      },
-      codeSent: (String verificationId, int? resendToken) {
-        completer.complete(verificationId);
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {
-        completer.complete(verificationId);
-      },
-    );
-
-    return completer.future;
-  }
 }

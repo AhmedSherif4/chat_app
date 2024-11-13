@@ -24,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(verifyPhoneNumberStatus: RequestStates.loading));
     final result = await _loginRepository.getCodeWithPhoneNumber(phoneNumber);
     result.fold(
-      (failure) {
+          (failure) {
         'failure cubit'.log();
         emit(
           state.copyWith(
@@ -32,7 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
               error: failure.message),
         );
       },
-      (data) {
+          (data) {
         'success cubit'.log();
         emit(
           state.copyWith(verifyPhoneNumberStatus: RequestStates.loaded),
@@ -46,12 +46,13 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       final result = await _loginRepository.validateOtpAndLogin(smsCode);
       result.fold(
-        (failure) => emit(
-          state.copyWith(
-              validateOtpAndLoginStatus: RequestStates.error,
-              error: failure.message),
-        ),
-        (data) async {
+            (failure) =>
+            emit(
+              state.copyWith(
+                  validateOtpAndLoginStatus: RequestStates.error,
+                  error: failure.message),
+            ),
+            (data) async {
           emit(
             state.copyWith(
               validateOtpAndLoginStatus: RequestStates.loaded,
@@ -87,7 +88,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> saveUserData(UserModel user) async {
     final result = await _loginRepository.saveUserData(user);
     result.fold(
-      (failure) {
+          (failure) {
         emit(
           state.copyWith(
             saveUserDataStatus: RequestStates.error,
@@ -95,7 +96,7 @@ class LoginCubit extends Cubit<LoginState> {
           ),
         );
       },
-      (data) {
+          (data) {
         emit(
           state.copyWith(
             saveUserDataStatus: RequestStates.loaded,

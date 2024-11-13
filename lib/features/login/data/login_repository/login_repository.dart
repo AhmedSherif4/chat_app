@@ -52,7 +52,14 @@ class LoginRepository implements LoginBaseRepository {
         if (r.name != null && r.imgPath != null) {
           await getIt<AppPreferences>().saveUserDataAddedStatus(true);
         }
-        await userLocalDataSource.saveUserData(userModel: r);
+        if (userLocalDataSource.getUserData() == null) {
+          await userLocalDataSource.saveUserData(userModel: r);
+        } else {
+          userLocalDataSource.getUserData()?.copyWith(
+                name: r.name,
+                imgPath: r.imgPath,
+              );
+        }
         return right(r);
       },
     );

@@ -16,4 +16,19 @@ class UserModel extends UserEntity {
       userId: json['uid'] != null ? json['uid'] as String : null,
     );
   }
+
+  @override
+  UserModel copyWith({
+    String? name,
+    String? phone,
+    String? imgPath,
+    String? userId,
+  }) {
+    return UserModel(
+      name: name ?? this.name,
+      phone: phone ?? this.phone,
+      imgPath: imgPath ?? this.imgPath,
+      userId: userId ?? this.userId,
+    );
+  }
 }
